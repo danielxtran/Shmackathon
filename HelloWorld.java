@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
 public class HelloWorld 
 {
 	public static void main(String[] args) throws IOException
@@ -66,16 +67,16 @@ public class HelloWorld
 		map.put("inadequte", 2);
 		map.put("struck", 3);
 		
-		Scanner sc = new Scanner(new File("src/hello/file.csv"));  
+		Scanner sc = new Scanner(new File("C:\\Users\\danie\\Downloads\\CORE_HackOhio_subset_cleaned_downsampled 1(Test Cases).csv"));  
 		sc.useDelimiter(",");   //sets the delimiter pattern  idk if i need this
 		int i = 0;
 		int j = 0;
 		while (sc.hasNext())  //returns a boolean value  
 		{  	
-			String[][] things = new String[5][10];
+			String[][] fileMatrix = new String[5][10];
 		
 			if(i > 6) {
-				things[i][j] = sc.next();
+				fileMatrix[i][j] = sc.next();
 				i++;
 			}
 			else {
@@ -87,22 +88,22 @@ public class HelloWorld
 		sc.close();  //closes the scanner  
 		
 	
-		Scanner k = new Scanner(System.in);
-		System.out.println("Input a sentence. ");
-		String statement = k.nextLine();
-		
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            String word = entry.getKey();
-            s = entry.getValue();
-            
-            // Check if the word appears in the sentence
-            if (statement.contains(word)) {
-                value += s;
-                System.out.println(word);
-            }
-        }
-        
-        System.out.println(value);
+		try (Scanner k = new Scanner(System.in)) {
+			System.out.println("Input a sentence. ");
+			String statement = k.nextLine();
+			
+			for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			    String word = entry.getKey();
+			    s = entry.getValue();
+			    
+			    // Check if the word appears in the sentence
+			    if (statement.contains(word)) {
+			        value += s;
+			        System.out.println(word);
+			    }
+			}
+		}
+		System.out.println(value);
 		
 		/*System.out.println("Input the file you'd like read: ");
 		
